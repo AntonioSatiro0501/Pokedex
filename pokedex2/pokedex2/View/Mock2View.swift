@@ -1,33 +1,89 @@
 import SwiftUI
 
 struct Mock2View: View {
+    @State private var searchText = ""
+    
     var body: some View {
         NavigationStack {
-            VStack(spacing: 15) {
-                Text("Estágios Evolutivos")
-                    .bold()
-                    .font(.title)
-                
-                Rectangle()
-                    .frame(width: 1000, height: 3)
-                    .foregroundColor(.black)
-                Spacer()
-                
-                NavigationLink(destination: MockView()) {
+            ScrollView {
+                LazyVStack(spacing: 15) {
+                    Spacer()
+                        .navigationTitle("Estágios Evolutivos")
+                    Text("\(searchText)")
+                        .searchable(text: $searchText)
+                    
                     ZStack {
                         Rectangle()
-                            .frame(width: 329, height: 114)
+                            .frame(width: 329, height: 380)
                             .foregroundStyle(
                                 LinearGradient(
-                                    colors: [.black, .yellow],
+                                    colors: [.black, .orange],
                                     startPoint: .leading,
                                     endPoint: .trailing
                                 )
                             )
-                            .cornerRadius(30)
+                            .cornerRadius(15)
                         
                         HStack {
                             VStack {
+                                Spacer()
+                                VStack {
+                                    Spacer()
+                                    Text("Pokemon do Dia")
+                                        .bold()
+                                        .foregroundStyle(Color.white)
+                                        .font(.title)
+                                    Spacer(minLength: 50)
+                                }
+                                
+                                VStack {
+                                    Image("Charmander")
+                                        .resizable()
+                                        .frame(width: 200, height: 200)
+                                    
+                                    Spacer(minLength: 30)
+                                    
+                                    HStack(spacing: 150) {
+                                        VStack {
+                                            Text("Charmander")
+                                                .bold()
+                                                .foregroundStyle(Color.white)
+                                            Text("Nº: 0004")
+                                                .foregroundStyle(Color.white)
+                                                .opacity(0.5)
+                                                .font(Font.system(size: 10))
+                                        }
+                                        ZStack {
+                                            Rectangle()
+                                                .frame(width: 55, height: 22)
+                                                .foregroundStyle(.red)
+                                                .cornerRadius(20)
+                                            Text("Fogo")
+                                                .fontWeight(.semibold)
+                                                .foregroundStyle(Color.white)
+                                                .font(Font.system(size: 10))
+                                        }
+                                    }
+                                }
+                                Spacer(minLength: 20)
+                            }
+                        }
+                    }
+                    
+                    NavigationLink(destination: MockView()) {
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 329, height: 114)
+                                .foregroundStyle(
+                                    LinearGradient(
+                                        colors: [.black, .yellow],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                                .cornerRadius(15)
+                            
+                            HStack {
                                 VStack {
                                     Text("Estágio 1")
                                         .bold()
@@ -37,9 +93,7 @@ struct Mock2View: View {
                             }
                         }
                     }
-                }
-                
-                NavigationLink(destination: MockView()) {
+                    
                     ZStack {
                         Rectangle()
                             .frame(width: 329, height: 114)
@@ -50,22 +104,18 @@ struct Mock2View: View {
                                     endPoint: .trailing
                                 )
                             )
-                            .cornerRadius(30)
-                        
+                            .cornerRadius(15)
+                            
                         HStack {
                             VStack {
-                                VStack {
-                                    Text("Estágio 2")
-                                        .bold()
-                                        .foregroundStyle(Color.white)
-                                        .font(.title)
-                                }
+                                Text("Estágio 2")
+                                    .bold()
+                                    .foregroundStyle(Color.white)
+                                    .font(.title)
                             }
                         }
                     }
-                }
-                
-                NavigationLink(destination: MockView()) {
+                    
                     ZStack {
                         Rectangle()
                             .frame(width: 329, height: 114)
@@ -76,21 +126,18 @@ struct Mock2View: View {
                                     endPoint: .trailing
                                 )
                             )
-                            .cornerRadius(30)
-                        
+                            .cornerRadius(15)
+                            
                         HStack {
                             VStack {
-                                VStack {
-                                    Text("Estágio 3")
-                                        .bold()
-                                        .foregroundStyle(Color.white)
-                                        .font(.title)
-                                }
+                                Text("Estágio 3")
+                                    .bold()
+                                    .foregroundStyle(Color.white)
+                                    .font(.title)
                             }
                         }
                     }
                 }
-                Spacer(minLength: 170)
             }
         }
     }
