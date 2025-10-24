@@ -2,21 +2,12 @@ import SwiftUI
 
 struct MainView: View {
     @State public var resut: PokemonResults?
-    
+    @State private var constante = true
 
     
     var body: some View {
-        TabView{
-            Mock3View()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-            
-            SearchView()
-                .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
-                }
-        }
+        Mock3View()
+        SearchView()
     }
 }
 
