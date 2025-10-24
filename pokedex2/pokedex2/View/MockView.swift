@@ -2,9 +2,19 @@ import SwiftUI
 
 struct MockView: View {
     let numero = 1...151
+    @State private var searchText = ""
+    
     var body: some View {
             ScrollView{
-                Spacer(minLength: 80)
+                Spacer()
+                    .navigationTitle("Estágios Evolutivos")
+                Text("\(searchText)")
+                    .searchable(text: $searchText)
+                Spacer(minLength: 20)
+                Text("Pokemons - Estágio 1")
+                    .bold()
+                    .font(.title)
+                Spacer(minLength: 30)
                 LazyVStack{
                     ForEach(numero, id: \.self) { index in
                         ZStack{
@@ -18,7 +28,7 @@ struct MockView: View {
                                             endPoint: .trailing
                                         )
                                     )
-                                    .cornerRadius(30)
+                                    .cornerRadius(15)
                                 
                                 HStack(spacing: 101) {
                                     VStack(alignment: .leading,spacing: 30){
